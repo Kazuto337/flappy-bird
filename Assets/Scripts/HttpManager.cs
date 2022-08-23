@@ -44,40 +44,7 @@ public class HttpManager : MonoBehaviour
         StartCoroutine(LogIn(postData));
     }
 
-    public void ClickGetScores()
-    {
-        StartCoroutine(GetScores());
-    }
 
-    IEnumerator GetScores()
-    {
-        string url = URL + "/leaders";
-        UnityWebRequest www = UnityWebRequest.Get(url);
-
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError)
-        {
-            Debug.Log("NETWORK ERROR " + www.error);
-        }
-        else if (www.responseCode == 200)
-        {
-            //Debug.Log(www.downloadHandler.text);
-            Scores resData = JsonUtility.FromJson<Scores>(www.downloadHandler.text);
-
-            int index = 0;
-            foreach (ScoreData score in resData.scores) //Por Santiago Lara
-            {
-                scoresUI[index].text = score.value.ToString() + " Points";
-                Debug.Log(score.userId + " | " + score.value);
-                index++;
-            }
-        }
-        else
-        {
-            Debug.Log(www.error);
-        }
-    }
     IEnumerator GetPerfil()
     {
         string url = URL + "/api/usuarios/" + Username;
@@ -153,7 +120,7 @@ public class HttpManager : MonoBehaviour
 
             PlayerPrefs.SetString("token", resData.token);
             PlayerPrefs.SetString("username", resData.usuario.username);
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MainMenu");
         }
         else
         {
@@ -161,21 +128,6 @@ public class HttpManager : MonoBehaviour
             Debug.Log(www.downloadHandler.text);
         }
     }
-}
-
-[System.Serializable]
-public class ScoreData
-{
-    public int userId;
-    public int value;
-    public string name;
-
-}
-
-[System.Serializable]
-public class Scores
-{
-    public ScoreData[] scores;
 }
 
 [System.Serializable]

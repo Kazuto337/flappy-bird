@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 342478352}
   - component: {fileID: 342478351}
   m_Layer: 5
-  m_Name: Password
+  m_Name: InputFieldPassword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 1262650546}
   - component: {fileID: 1262650545}
   m_Layer: 5
-  m_Name: Username
+  m_Name: InputFieldUsername
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoresUI: []
-  URL: 
+  URL: https://unitywebrequest-restapi.herokuapp.com
   Token: 
   Username: 
 --- !u!4 &1632585161
